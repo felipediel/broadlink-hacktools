@@ -8,7 +8,7 @@ from broadlinkhacktools.protocol.const import DEFAULT_IV, DEFAULT_KEY, Command
 
 
 # Load packets with a known client key.
-src_folder = 'samples/felipediel/0x2787-v20025-homeassistant'
+src_folder = os.path.join('samples', 'felipediel', '0x2787-v20025-homeassistant')
 packets = PersistenceHandler.load_packets(src_folder)
 
 # Decrypt packets.
@@ -23,7 +23,7 @@ auth_response = next(filter(spec, packets))
 stolen_key = PacketDecryptor.get_key(auth_response)
 
 # Load packets with a different client key (same device).
-src_folder = 'samples/felipediel/0x2787-v55-broadlinkapp'  # TODO
+src_folder = os.path.join('samples', 'felipediel', '0x2787-v20025-broadlinkapp')  # TODO
 packets = PersistenceHandler.load_packets(src_folder)
 
 # Decrypt packets with the stolen key.
@@ -39,6 +39,7 @@ except OSError as error:
 
 # Print packets
 printer = PacketPrinter()
-with open('example6/packets.txt', 'w+') as file:
+dest_file = os.path.join('example6', 'packets.txt')
+with open(dest_file, 'w+') as file:
     for packet in packets:
         printer.print(packet, file=file)

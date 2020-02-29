@@ -21,7 +21,7 @@ class PersistenceHandler:
 
         packets = []
         for index, filename in enumerate(filenames):
-            with open(f'{folder}/{filename}', 'rb') as file:
+            with open(os.path.join(folder, filename), 'rb') as file:
                 packet = PacketFactory.from_file(file)
                 if check and not check_integrity(packet):
                     _LOGGER.error("Failed to load packet %d: checksum error", index)
@@ -39,5 +39,5 @@ class PersistenceHandler:
                 raise
 
         for index, packet in enumerate(packets):
-            with open(f'{folder}/{index}.bin', 'wb') as file:
+            with open(os.path.join(folder, f'{index}.bin'), 'wb') as file:
                 file.write(packet.get_bytes())

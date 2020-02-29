@@ -9,14 +9,14 @@ from broadlinkhacktools.protocol.const import DEFAULT_IV, DEFAULT_KEY, Command
 
 # Load samples.
 folders = [
-    'samples/felipediel/0x2787-v20025-homeassistant',
-    'samples/bbreton09/0x5f36-v44057-debug',
-    'samples/elafargue/0x5f36-v44057-testsolution2',
-    'samples/dennisadvani/0x5f36-v44057-testsolution3',
-    'samples/turlubullu/0x5f36-v44057-testsolution3',
-    'samples/InToSSH/0x5f36-v44057-testsolution3',
-    'samples/luisfosoares/0x5f36-v44057-testsolution4',
-    'samples/nickollasaranha/0x5f36-v44057-testsolution4'
+    os.path.join('samples', 'felipediel', '0x2787-v20025-homeassistant'),
+    os.path.join('samples', 'bbreton09', '0x5f36-v44057-debug'),
+    os.path.join('samples', 'elafargue', '0x5f36-v44057-testsolution2'),
+    os.path.join('samples', 'dennisadvani', '0x5f36-v44057-testsolution3'),
+    os.path.join('samples', 'turlubullu', '0x5f36-v44057-testsolution3'),
+    os.path.join('samples', 'InToSSH', '0x5f36-v44057-testsolution3'),
+    os.path.join('samples', 'luisfosoares', '0x5f36-v44057-testsolution4'),
+    os.path.join('samples', 'nickollasaranha', '0x5f36-v44057-testsolution4')
 ]
 samples = [PersistenceHandler.load_packets(folder) for folder in folders]
 
@@ -35,16 +35,16 @@ except OSError as error:
 # Group packets by command and print results.
 printer = PacketPrinter()
 command_files = [
-    (Command.AUTH_REQUEST, 'example4/auth_requests.txt'),
-    (Command.AUTH_RESPONSE, 'example4/auth_responses.txt'),
-    (Command.COMMAND_REQUEST, 'example4/command_requests.txt'),
-    (Command.COMMAND_RESPONSE, 'example4/command_responses.txt'),
-    (Command.DISCOVER_REQUEST, 'example4/discover_requests.txt'),
-    (Command.DISCOVER_RESPONSE, 'example4/discover_responses.txt'),
-    (Command.HELLO_REQUEST, 'example4/hello_request.txt'),
-    (Command.HELLO_RESPONSE, 'example4/hello_response.txt'),
-    (Command.JOIN_REQUEST, 'example4/join_request.txt'),
-    (Command.JOIN_RESPONSE, 'example4/join_response.txt') 
+    (Command.AUTH_REQUEST, os.path.join('example4', 'auth-requests.txt')),
+    (Command.AUTH_RESPONSE, os.path.join('example4', 'auth-responses.txt')),
+    (Command.COMMAND_REQUEST, os.path.join('example4', 'command-requests.txt')),
+    (Command.COMMAND_RESPONSE, os.path.join('example4', 'command-responses.txt')),
+    (Command.DISCOVER_REQUEST, os.path.join('example4', 'discover-requests.txt')),
+    (Command.DISCOVER_RESPONSE, os.path.join('example4', 'discover-responses.txt')),
+    (Command.HELLO_REQUEST, os.path.join('example4', 'hello-request.txt')),
+    (Command.HELLO_RESPONSE, os.path.join('example4', 'hello-response.txt')),
+    (Command.JOIN_REQUEST, os.path.join('example4', 'join-request.txt')),
+    (Command.JOIN_RESPONSE, os.path.join('example4', 'join-response.txt'))
 ]
 for command, filename in command_files:
     results = []

@@ -33,10 +33,11 @@ except OSError as error:
 
 # Print packets to a file.
 printer = PacketPrinter()
-with open('example1/packets.txt', 'w+') as file:
+dest_file = os.path.join('example1', 'packets.txt')
+with open(dest_file, 'w+') as file:
     for packet in packets:
         printer.print(packet, file=file)
 
 # Store packets into binary files.
-dest_folder = 'example1/bin'
+dest_folder = os.path.join('example1', 'bin')
 PersistenceHandler.store_packets(packets, dest_folder)
