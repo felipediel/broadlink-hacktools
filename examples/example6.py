@@ -8,8 +8,9 @@ from broadlinkhacktools.protocol.const import DEFAULT_IV, DEFAULT_KEY, Command
 
 
 # Load packets with a known client key.
-src_folder = os.path.join('samples', 'felipediel', '0x2787-v20025-homeassistant')
+src_folder = os.path.join('samples', 'dennisadvani', '0x5f36-v44057-debug')
 packets = PersistenceHandler.load_packets(src_folder)
+print(len(packets))
 
 # Decrypt packets.
 decryptor = PacketDecryptor(DEFAULT_KEY, DEFAULT_IV)
@@ -21,9 +22,10 @@ auth_response = next(filter(spec, packets))
 
 # Obtain device key from auth response.
 stolen_key = PacketDecryptor.get_key(auth_response)
+print(stolen_key)
 
 # Load packets with a different client key (same device).
-src_folder = os.path.join('samples', 'felipediel', '0x2787-v20025-broadlinkapp')  # TODO
+src_folder = os.path.join('samples', 'dennisadvani', '0x5f36-v44057-broadlinkapp')
 packets = PersistenceHandler.load_packets(src_folder)
 
 # Decrypt packets with the stolen key.
