@@ -3,7 +3,7 @@
 Broadlink Hacktools is a Python module for decrypting, filtering and analyzing packets captured from Broadlink devices to better integrate them with home automation platforms.
 
 - This is not an official Broadlink application.
-- For now, only universal remote devices have are supported.
+- For now, only universal remote devices are supported.
 
 ## Instalation
 
